@@ -1,0 +1,77 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    width: 100%
+}
+
+.container {
+    width: calc(100vw - 5px);
+    height: calc(100vh - 5px);
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    border: 1px solid lightgray;
+}
+
+.sidebar {
+    background-color: #2a483a;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main {
+    background-color: black;
+    flex: 6;
+    overflow: scroll;
+    display: block;
+    position: relative;
+}
+
+.rhp {
+    background-color: #2a483a;
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid {
+    height: 3048px;
+    width: 3048px;
+    flex: 1;
+    display: block;
+    margin: 50px;
+}
+
+.row {
+
+}
+
+.cell {
+    /*position: absolute;*/
+    border: 0;
+    padding: 0;
+    /*padding: 5px;*/
+    /*max-width: 16px;*/
+    /*max-height: 32px;*/
+    /*min-width: 16px;*/
+    /*min-height: 32px;*/
+}
+
+/*.row {*/
+/*height: 10px;*/
+/*width: 100%;*/
+/*background-color: aquamarine;*/
+/*}*/
+
+button {
+    border-color: lightgray;
+    border-radius: 5px;
+}

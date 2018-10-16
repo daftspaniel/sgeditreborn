@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/ui.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/screen.js"></script>
+    <script src="js/render.js"></script>
+    <script src="libs/jquery-3.3.1.slim.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+            console.log( "document loaded" );
+            constructColours()
+            constructCharset()
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <button onclick="draw()">Test</button>
+        <button onclick="zoomIn()">Zoom</button>
+        <button onclick="zoomOut()">Restore</button>
+        <button onclick="showGrid()">Grid</button>
+        <button onclick="hideGrid()">Grid</button>
+        <button onclick="reset()">Reset</button>
+    </div>
+    <div class="main">
+        <div id="grid" class="grid">
+
+        </div>
+    </div>
+    <div class="rhp">
+        <div id="sgsel"></div>
+        <div id="charsel"></div>
+    </div>
+</div>
+</body>
+</html>
