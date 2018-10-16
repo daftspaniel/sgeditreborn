@@ -1,32 +1,12 @@
-// let data = gridData(32, 192, 16, 1)
-// const view = {cell: {width: 16, height: 32}, padding: 0, border: 0}
-
 function reset() {
     container = document.getElementById('grid')
     container.innerHTML = ''
 }
 
-// function gridData(gridWidth, gridHeight, cellWidth, cellHeight) {
-//     let data = new Array()
-//
-//     for (var row = 0; row < gridHeight; row++) {
-//         data.push(new Array())
-//
-//         for (var column = 0; column < gridWidth; column++) {
-//             data[row].push({
-//                 x: column,
-//                 y: row
-//             })
-//         }
-//     }
-//     return data
-// }
-
 function draw(container, width, height) {
     container = document.getElementById('grid')
     container.innerHTML = ''
-    // width = 32
-    // height = 192
+
     width = screenData.columns
     height = screenData.rows
 
@@ -54,8 +34,6 @@ function draw(container, width, height) {
         }
         container.append(rowDiv)
     }
-
-    console.log('POP')
 }
 
 function showGrid() {

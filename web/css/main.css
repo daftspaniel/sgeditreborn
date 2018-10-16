@@ -37,6 +37,17 @@ button {
 .rhp {
     background-color: #2a483a;
     flex: 3;
+}
+
+.rhp-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding-bottom: 25px;
+}
+
+.rhp-block-palette{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,23 +66,14 @@ button {
 }
 
 .cell {
-    /*position: absolute;*/
     border: 0;
     padding: 0;
-    /*padding: 5px;*/
-    /*max-width: 16px;*/
-    /*max-height: 32px;*/
-    /*min-width: 16px;*/
-    /*min-height: 32px;*/
 }
-
-/*.row {*/
-/*height: 10px;*/
-/*width: 100%;*/
-/*background-color: aquamarine;*/
-/*}*/
 
 button {
     border-color: lightgray;
     border-radius: 5px;
+    margin-bottom: 20px;
+    width: 90%;
+    padding: 5px;
 }

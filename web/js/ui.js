@@ -5,7 +5,7 @@ function constructColours() {
 
         for (var j = 0; j < 8; j++) {
             var char = (i + (j * 16)).toString(16)
-            myHTML += "<TD style='cursor:pointer'><IMG id=\"" + char + "\" onclick=\"setChar('" + char + "')\" title='chr(" + (i + (j * 16)) + "/#$" + char + ")' src='grafix/" + char + ".jpg' border=1></TD>";
+            myHTML += "<TD style='cursor:pointer'><IMG id=\"" + char + "\" oncontextmenu=\"return false\" onmousedown=\"state.setChar(event,'" + char + "');return false\" title='chr(" + (i + (j * 16)) + "/#$" + char + ")' src='grafix/" + char + ".jpg' border=1></TD>";
         }
         myHTML += "</TR>"
     }
@@ -22,7 +22,7 @@ function constructCharset() {
         myHTML += "<TR>"
         for (var j = 0; j < 8; j++) {
             var char = (i + (j * 16)).toString(16)
-            myHTML += "<TD style='cursor:pointer'><IMG id=\"" + char + "\" onclick=\"setChar('" + char + "')\" title='chr(" + (i + (j * 16))  + "/#$" + char + ")' src='grafix/" + char + ".jpg' border=1></TD>"
+            myHTML += "<TD style='cursor:pointer'><IMG id=\"" + char + "\" onclick=\"state.setPrimaryChar('" + char + "')\" title='chr(" + (i + (j * 16))  + "/#$" + char + ")' src='grafix/" + char + ".jpg' border=1></TD>"
         }
         myHTML += "</TR>"
     }

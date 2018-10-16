@@ -1,7 +1,5 @@
 // Semi-graphics 24 - Element size 64 x 192
 // 6144 bytes - 8 colours - Black border
-const columns = 64
-const rows = 192
 
 class SG24Mode {
     constructor() {
@@ -10,7 +8,7 @@ class SG24Mode {
     }
 
     init() {
-        this.data = buildGrid(64, 192)
+        this.data = buildGrid(this.columns, this.rows)
     }
 }
 
@@ -21,10 +19,9 @@ class CocoVGAMode {
     }
 
     init() {
-        this.data = buildGrid(64, 32)
+        this.data = buildGrid(this.columns, this.rows)
     }
 }
-
 
 let screenData = new CocoVGAMode()
 screenData.init()
