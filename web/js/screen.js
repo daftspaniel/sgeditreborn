@@ -10,6 +10,11 @@ class SG24Mode {
     init() {
         this.data = buildGrid(this.columns, this.rows)
     }
+
+    set(x, y, value) {
+        this.data[x][y].value = value
+        localStorage.screenData = JSON.stringify(this.data)
+    }
 }
 
 class CocoVGAMode {
@@ -20,6 +25,11 @@ class CocoVGAMode {
 
     init() {
         this.data = buildGrid(this.columns, this.rows)
+    }
+
+    set(x, y, value) {
+        this.data[x][y].value = value
+        localStorage.screenData = JSON.stringify(this.data)
     }
 }
 

@@ -13,12 +13,12 @@ function draw(container, width, height) {
     let rowDiv = null
     let newDiv = null
 
-    for (var j = 0; j < height; j++) {
+    for (let j = 0; j < height; j++) {
         rowDiv = document.createElement("div")
         rowDiv.classList.add('row')
         rowDiv.style.height = '16px'
 
-        for (var i = 0; i < width; i++) {
+        for (let i = 0; i < width; i++) {
             newDiv = document.createElement("div")
             newDiv.classList.add('cell')
 
@@ -29,7 +29,11 @@ function draw(container, width, height) {
             newDiv.style.width = '8px'
 
             newDiv.innerHtml = '&nbsp;'
-            newDiv.title = '['+ (i) + ',' + (j) + ']'
+            newDiv.id = i + '-' + j
+            newDiv.addEventListener('click', (event) => {
+                state.actionOnBlock([i, j], '#' + i + '-' + j)
+            })
+            newDiv.title = '[' + (i) + ',' + (j) + ']'
             rowDiv.append(newDiv)
         }
         container.append(rowDiv)
