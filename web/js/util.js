@@ -8,7 +8,8 @@ function buildGrid(gridWidth, gridHeight) {
         for (var column = 0; column < gridWidth; column++) {
             data[row].push({
                 x: column,
-                y: row
+                y: row,
+                value: null
             })
         }
     }
