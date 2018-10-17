@@ -44,10 +44,11 @@ button {
     align-items: center;
     justify-content: center;
     min-height: 50px;
-    padding-bottom: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.rhp-block-palette{
+.rhp-block-palette {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,4 +77,9 @@ button {
     margin-bottom: 20px;
     width: 90%;
     padding: 5px;
+}
+
+.big-block {
+    height: 48px;
+    width: 32px
 }
