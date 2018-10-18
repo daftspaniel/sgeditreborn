@@ -11,12 +11,17 @@
     <script src="js/editor.js"></script>
     <script src="libs/jquery-3.3.1.slim.min.js"></script>
     <script>
+        var screen, state
         $( document ).ready(function() {
             console.log( "App loaded.")
             constructColours()
             constructCharset()
+            state = new Editor()
+            screen = new CocoVGAMode()
+            screen.init()
             state.update()
-            draw()
+            state.screen = screen
+            main(state)
         });
     </script>
 </head>

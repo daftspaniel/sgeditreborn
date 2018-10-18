@@ -2,6 +2,7 @@ class Editor {
     constructor() {
         this.primary = localStorage.primaryChar ? localStorage.primaryChar : '8f'
         this.secondary = localStorage.secondaryChar ? localStorage.secondaryChar : '80'
+        this.unit = 8
     }
 
     update() {
@@ -32,8 +33,6 @@ class Editor {
 
     actionOnBlock(pos, id) {
         $(id).css('background-image' ,'url("grafix/' + this.primary + '.jpg")')
-        screenData.set(pos[0],pos[1],this.primary)
+        this.screen.set(pos[0],pos[1],this.primary)
     }
 }
-
-let state = new Editor()

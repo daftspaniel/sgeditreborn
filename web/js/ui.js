@@ -20,3 +20,28 @@ function buildCharTable(startIndex, endIndex){
     tableHtml += "</TABLE>"
     return tableHtml
 }
+
+
+function showGrid() {
+    $('.cell').css('border', '1px solid #111111')
+    $('.cell').css('margin', '0px')
+    $('.row').css('margin', '0px')
+}
+
+function hideGrid() {
+    $('.cell').css('border', '')
+    $('.cell').css('margin', '')
+    $('.row').css('margin', '')
+}
+
+function zoomIn() {
+    $('.row').css('height', '64px')
+    $('.cell').css('width', '32px')
+    $('.cell').css('height', '64px')
+}
+
+function zoomOut() {
+    $('.row').css('height', '32px')
+    $('.cell').css('width', '16px')
+    $('.cell').css('height', '32px')
+}

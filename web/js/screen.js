@@ -9,6 +9,10 @@ class Mode {
 
     init() {
         this.data = buildGrid(this.columns, this.rows)
+        if (localStorage.screenData) {
+            this.data = JSON.parse(localStorage.screenData)
+            console.log(this.data)
+        }
     }
 
     set(x, y, value) {
@@ -57,24 +61,10 @@ class SG4Mode {
     }
 }
 
-class CocoVGAMode {
+class CocoVGAMode extends Mode {
     constructor() {
+        super()
         this.columns = 64
         this.rows = 32
     }
-
-    init() {
-        this.data = buildGrid(this.columns, this.rows)
-        if (localStorage.screenData) {
-            this.data = localStorage.screenData
-        }
-    }
-
-    set(x, y, value) {
-        this.data[x][y].value = value
-        localStorage.screenData = JSON.stringify(this.data)
-    }
 }
-
-let screenData = new CocoVGAMode()
-screenData.init()
