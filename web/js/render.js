@@ -32,18 +32,20 @@ function main(state) {
                 newDiv.style.backgroundImage = 'url("grafix/60.jpg")'
 
             newDiv.style.backgroundSize = state.unit + 'px ' + (state.unit * 1.5) + 'px'
-            console.log(newDiv.style.backgroundSize)
-            newDiv.style.backgroundRepeat= 'no-repeat'
-
-            newDiv.style.display = 'inline-block'
             newDiv.style.height = cellHeight
             newDiv.style.width = cellWidth
 
             newDiv.innerHtml = '&nbsp;'
             newDiv.id = i + '-' + j
-            newDiv.addEventListener('click', (event) => {
-                state.actionOnBlock([i, j], '#' + i + '-' + j)
+            newDiv.addEventListener('mousedown', (event) => {
+                if (event.button === 0) {
+                    state.actionOnBlock([i, j], '#' + i + '-' + j, state.primary)
+                } else {
+                    state.actionOnBlock([i, j], '#' + i + '-' + j, state.secondary)
+                }
+                return false
             })
+            newDiv.addEventListener('contextmenu',event => event.preventDefault())
             newDiv.title = '[' + (i) + ',' + (j) + ']'
             rowDiv.append(newDiv)
         }

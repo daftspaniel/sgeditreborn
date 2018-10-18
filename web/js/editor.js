@@ -28,11 +28,11 @@ class Editor {
     setSecondaryChar(char) {
         $('#secondaryBlock').attr('src', 'grafix/' + char + '.jpg')
         localStorage.secondaryChar = char
-        this.secondary = char        
+        this.secondary = char
     }
 
-    actionOnBlock(pos, id) {
-        $(id).css('background-image' ,'url("grafix/' + this.primary + '.jpg")')
-        this.screen.set(pos[0],pos[1],this.primary)
+    actionOnBlock(pos, id, char) {
+        $(id).css('background-image', 'url("grafix/' + char + '.jpg")')
+        this.screen.set(pos[0], pos[1], char)
     }
 }

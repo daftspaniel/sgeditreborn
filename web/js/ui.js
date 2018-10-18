@@ -1,12 +1,12 @@
 function constructColours() {
-     $("#sgsel").html(buildCharTable(128, 144))
+    $("#sgsel").html(buildCharTable(128, 144))
 }
 
 function constructCharset() {
-     $("#charsel").html(buildCharTable(0, 16))
+    $("#charsel").html(buildCharTable(0, 16))
 }
 
-function buildCharTable(startIndex, endIndex){
+function buildCharTable(startIndex, endIndex) {
     let tableHtml = "<TABLE height=480 cellpadding=1 cellspacing=0 style='border:none'>";
     for (var i = startIndex; i < endIndex; i++) {
         tableHtml += "<TR>"
@@ -35,13 +35,18 @@ function hideGrid() {
 }
 
 function zoomIn() {
-    $('.row').css('height', '64px')
-    $('.cell').css('width', '32px')
-    $('.cell').css('height', '64px')
+    state.unit += 2
+    updateZoom()
 }
 
+function  updateZoom() {
+    if (state.unit === 0){state.unit = 2}else if(state.unit >20) {state.unit=20}
+    $('.row').css('height', state.unit * 1.5 + 'px')
+    $('.cell').css('width', state.unit + 'px')
+    $('.cell').css('height', state.unit * 1.5 + 'px')
+    $('.cell').css('background-size', state.unit + 'px ' + (state.unit * 1.5) + 'px')
+}
 function zoomOut() {
-    $('.row').css('height', '32px')
-    $('.cell').css('width', '16px')
-    $('.cell').css('height', '32px')
+    state.unit -= 2
+    updateZoom()
 }
