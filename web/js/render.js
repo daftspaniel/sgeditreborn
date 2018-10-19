@@ -24,7 +24,9 @@ function main(state) {
         for (let i = 0; i < width; i++) {
             newDiv = document.createElement("div")
             newDiv.classList.add('cell')
-            newDiv.style.backgroundColor = '#ffffff'
+            newDiv.innerHtml = '&nbsp;'
+            newDiv.id = i + '-' + j
+            newDiv.title = '[' + (i) + ',' + (j) + ']'
 
             if (screen.data && screen.data[i][j].value)
                 newDiv.style.backgroundImage = 'url("grafix/' + screen.data[i][j].value + '.jpg")'
@@ -35,18 +37,12 @@ function main(state) {
             newDiv.style.height = cellHeight
             newDiv.style.width = cellWidth
 
-            newDiv.innerHtml = '&nbsp;'
-            newDiv.id = i + '-' + j
             newDiv.addEventListener('mousedown', (event) => {
-                if (event.button === 0) {
-                    state.actionOnBlock([i, j], '#' + i + '-' + j, state.primary)
-                } else {
-                    state.actionOnBlock([i, j], '#' + i + '-' + j, state.secondary)
-                }
+                state.actionOnBlock([i, j], '#' + i + '-' + j, event.button === 0 ? state.primary : state.secondary)
                 return false
             })
-            newDiv.addEventListener('contextmenu',event => event.preventDefault())
-            newDiv.title = '[' + (i) + ',' + (j) + ']'
+            newDiv.addEventListener('contextmenu', event => event.preventDefault())
+
             rowDiv.append(newDiv)
         }
         container.append(rowDiv)

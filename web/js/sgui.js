@@ -39,13 +39,19 @@ function zoomIn() {
     updateZoom()
 }
 
-function  updateZoom() {
-    if (state.unit === 0){state.unit = 2}else if(state.unit >20) {state.unit=20}
+function updateZoom() {
+    if (state.unit === 0) {
+        state.unit = 2
+    } else if (state.unit > 60) {
+        state.unit = 60
+    }
+    console.log(state.unit)
     $('.row').css('height', state.unit * 1.5 + 'px')
     $('.cell').css('width', state.unit + 'px')
     $('.cell').css('height', state.unit * 1.5 + 'px')
     $('.cell').css('background-size', state.unit + 'px ' + (state.unit * 1.5) + 'px')
 }
+
 function zoomOut() {
     state.unit -= 2
     updateZoom()

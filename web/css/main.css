@@ -71,6 +71,7 @@ button {
     padding: 0;
     background-repeat: no-repeat;
     display: inline-block;
+    background-color: white;
 }
 
 button {
@@ -84,4 +85,30 @@ button {
 .big-block {
     height: 48px;
     width: 32px
+}
+
+select {
+    width: calc(100% - 20px);
+}
+
+.side-label {
+    background-color: darkgreen;
+    color: bisque;
+    width: calc(100% - 20px);
+    font-size: smaller;
+    padding: 5px;
+    font-family: sans-serif;
+}
+
+.side-control-row {
+    display: flex;
+    width: calc(100% - 20px);
+}
+.side-control-row-title {
+    display: flex;
+    width: calc(100% - 10px);
+}
+
+.mini-button {
+    flex: 1;
 }

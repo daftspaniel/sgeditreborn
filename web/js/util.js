@@ -1,4 +1,3 @@
-
 function buildGrid(gridWidth, gridHeight) {
     let data = new Array()
 
@@ -14,4 +13,11 @@ function buildGrid(gridWidth, gridHeight) {
         }
     }
     return data
+}
+
+function getImgUrl(char) {
+    return 'url("grafix/' + char + '.jpg")'
+}
+function getImg(char) {
+    return 'grafix/' + char + '.jpg'
 }

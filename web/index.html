@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/ui.js"></script>
+    <script src="js/sgui.js"></script>
     <script src="js/util.js"></script>
-    <script src="js/screen.js"></script>
+    <script src="js/modes.js"></script>
     <script src="js/render.js"></script>
     <script src="js/editor.js"></script>
     <script src="libs/jquery-3.3.1.slim.min.js"></script>
     <script>
         var screen, state
-        $( document ).ready(function() {
-            console.log( "App loaded.")
+        $(document).ready(function () {
+            console.log("App loaded.")
             constructColours()
             constructCharset()
+
             state = new Editor()
-            screen = new CocoVGAMode()
-            screen.init()
-            state.update()
-            state.screen = screen
+            state.initMode('sg4')
+            state.initGUIState()
             main(state)
         });
     </script>
@@ -28,12 +27,38 @@
 <body>
 <div class="container">
     <div class="sidebar">
-        <button onclick="draw()">Test</button>
-        <button onclick="zoomIn()">Zoom IN</button>
-        <button onclick="zoomOut()">Zoom OUT</button>
-        <button onclick="showGrid()">Grid ON</button>
-        <button onclick="hideGrid()">Grid OFF</button>
-        <button onclick="reset()">Reset</button>
+        <div class="side-control-row-title">
+            <img src="grafix/13.jpg"/>
+            <img src="grafix/7.jpg"/>
+            <img src="grafix/5.jpg"/>
+            <img src="grafix/4.jpg"/>
+            <img src="grafix/9.jpg"/>
+            <img src="grafix/14.jpg"/>
+        </div>
+        <br/>
+        <br/>
+        <div class="side-label">Mode</div>
+        <select>
+            <optgroup label="Standard VDG">
+                <option value="sg4">SG4 32 x 16</option>
+                <option value="sg24">SG24 64 x 192</option>
+            </optgroup>
+            <optgroup label="Special Hardware">
+                <option value="cocoVGA">Coco VGA 64 x 32</option>
+            </optgroup>
+        </select>
+        <!--<button onclick="draw()">Test</button>-->
+        <div class="side-label">Zoom</div>
+        <div class="side-control-row">
+            <button onclick="zoomIn()" class="mini-button">IN</button>
+            <button onclick="zoomOut()" class="mini-button">OUT</button>
+        </div>
+        <div class="side-label">Grid</div>
+        <div class="side-control-row">
+            <button onclick="showGrid()">ON</button>
+            <button onclick="hideGrid()">OFF</button>
+        </div>
+        <!--<button onclick="reset()">Reset</button>-->
     </div>
     <div class="main">
         <div id="grid" class="grid">
@@ -43,7 +68,7 @@
     <div class="rhp">
         <div class="rhp-toolbar">
             <img id="primaryBlock" src="" class="big-block"/>
-            <img id="secondaryBlock" src=""  class="big-block"/>
+            <img id="secondaryBlock" src="" class="big-block"/>
         </div>
         <div class="rhp-block-palette">
             <div id="sgsel"></div>

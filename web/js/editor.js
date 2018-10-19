@@ -5,9 +5,23 @@ class Editor {
         this.unit = 8
     }
 
-    update() {
+    initGUIState() {
         this.setPrimaryChar(this.primary)
         this.setSecondaryChar(this.secondary)
+    }
+
+    initMode(mode) {
+        if (mode === 'sg4') {
+            this.screen = new SG4Mode()
+        }
+        else if (mode === 'cocoVGA') {
+            this.screen = new CocoVGAMode()
+        }
+        else {
+            alert('error - mode request -' + mode)
+            return
+        }
+        this.screen.init()
     }
 
     setChar(event, char) {
@@ -20,19 +34,19 @@ class Editor {
     }
 
     setPrimaryChar(char) {
-        $('#primaryBlock').attr('src', 'grafix/' + char + '.jpg')
+        $('#primaryBlock').attr('src', getImg(char))
         localStorage.primaryChar = char
         this.primary = char
     }
 
     setSecondaryChar(char) {
-        $('#secondaryBlock').attr('src', 'grafix/' + char + '.jpg')
+        $('#secondaryBlock').attr('src', getImg(char))
         localStorage.secondaryChar = char
         this.secondary = char
     }
 
     actionOnBlock(pos, id, char) {
-        $(id).css('background-image', 'url("grafix/' + char + '.jpg")')
+        $(id).css('background-image', getImgUrl(char))
         this.screen.set(pos[0], pos[1], char)
     }
 }
