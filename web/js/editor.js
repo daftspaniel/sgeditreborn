@@ -2,7 +2,7 @@ class Editor {
     constructor() {
         this.primary = localStorage.primaryChar ? localStorage.primaryChar : '8f'
         this.secondary = localStorage.secondaryChar ? localStorage.secondaryChar : '80'
-        this.unit = 8
+        this.unit = localStorage.unit ? parseInt(localStorage.unit) : 8
         this.mouseDown = false
     }
 

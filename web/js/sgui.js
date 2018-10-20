@@ -34,13 +34,19 @@ function hideGrid() {
     $('.row').css('margin', '')
 }
 
+function zoomReset() {
+    state.unit = state.screen.defaultUnit
+    updateZoom()
+}
+
 function zoomIn() {
     state.unit += 2
     updateZoom()
 }
 
 function updateZoom() {
-    if (state.unit === 0) {
+    console.log('Zoom', state.unit)
+    if (state.unit < 1) {
         state.unit = 2
     } else if (state.unit > 60) {
         state.unit = 60
@@ -50,6 +56,9 @@ function updateZoom() {
     $('.cell').css('width', state.unit + 'px')
     $('.cell').css('height', state.unit * 1.5 + 'px')
     $('.cell').css('background-size', state.unit + 'px ' + (state.unit * 1.5) + 'px')
+
+    localStorage.unit = state.unit
+    console.log('SAVED')
 }
 
 function zoomOut() {
