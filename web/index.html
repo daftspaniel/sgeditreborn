@@ -24,7 +24,7 @@
         });
     </script>
 </head>
-<body>
+<body onmousedown="return false" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();">
 <div class="container">
     <div class="sidebar">
         <div class="side-control-row-title">
@@ -38,7 +38,7 @@
         <br/>
         <br/>
         <div class="side-label">Mode</div>
-        <select>
+        <select onchange="alert(this.value)">
             <optgroup label="Standard VDG">
                 <option value="sg4">SG4 32 x 16</option>
                 <option value="sg24">SG24 64 x 192</option>
@@ -51,6 +51,7 @@
         <div class="side-label">Zoom</div>
         <div class="side-control-row">
             <button onclick="zoomIn()" class="mini-button">IN</button>
+            <button onclick="zoomReset()" class="mini-button">1:1</button>
             <button onclick="zoomOut()" class="mini-button">OUT</button>
         </div>
         <div class="side-label">Grid</div>
@@ -61,7 +62,7 @@
         <!--<button onclick="reset()">Reset</button>-->
     </div>
     <div class="main">
-        <div id="grid" class="grid">
+        <div id="grid" class="grid" draggable="false" onmouseleave="state.mouseDown = false;console.log('Mouse Down FALSE')">
 
         </div>
     </div>

@@ -6,9 +6,9 @@ function reset() {
 function main(state) {
     container = document.getElementById('grid')
     container.innerHTML = ''
+    container.draggable = false
 
     let screen = state.screen
-    console.log('SCREEN', screen)
     let width = screen.columns
     let height = screen.rows
     let cellWidth = state.unit + 'px'
@@ -20,13 +20,17 @@ function main(state) {
         rowDiv = document.createElement("div")
         rowDiv.classList.add('row')
         rowDiv.style.height = cellHeight
+        rowDiv.draggable = false
 
         for (let i = 0; i < width; i++) {
             newDiv = document.createElement("div")
             newDiv.classList.add('cell')
-            newDiv.innerHtml = '&nbsp;'
             newDiv.id = i + '-' + j
             newDiv.title = '[' + (i) + ',' + (j) + ']'
+            newDiv.draggable = false
+            newDiv.addEventListener('ondragstart', (event) => {
+                return false
+            })
 
             if (screen.data && screen.data[i][j].value)
                 newDiv.style.backgroundImage = 'url("grafix/' + screen.data[i][j].value + '.jpg")'
@@ -38,7 +42,23 @@ function main(state) {
             newDiv.style.width = cellWidth
 
             newDiv.addEventListener('mousedown', (event) => {
-                state.actionOnBlock([i, j], '#' + i + '-' + j, event.button === 0 ? state.primary : state.secondary)
+                state.actingBlock = event.button === 0 ? state.primary : state.secondary
+                state.actionOnBlock([i, j], '#' + i + '-' + j, state.actingBlock)
+                state.mouseDown = true
+                console.log('Mouse Down TRUE')
+                return false
+            })
+
+            newDiv.addEventListener('mouseenter', (event) => {
+                console.log('ENTERING')
+                if (state.mouseDown)
+                    state.actionOnBlock([i, j], '#' + i + '-' + j, state.actingBlock)
+                return false
+            })
+
+            newDiv.addEventListener('mouseup', (event) => {
+                state.mouseDown = false
+                console.log('Mouse Down FALSE')
                 return false
             })
             newDiv.addEventListener('contextmenu', event => event.preventDefault())
