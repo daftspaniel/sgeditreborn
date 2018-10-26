@@ -1,6 +1,7 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: sans-serif;
 }
 
 button {
@@ -97,13 +98,13 @@ select {
     width: calc(100% - 20px);
     font-size: smaller;
     padding: 5px;
-    font-family: sans-serif;
 }
 
 .side-control-row {
     display: flex;
     width: calc(100% - 20px);
 }
+
 .side-control-row-title {
     display: flex;
     width: calc(100% - 10px);
@@ -111,4 +112,49 @@ select {
 
 .mini-button {
     flex: 1;
+}
+
+.popup-border {
+    background-color: #b1f58e;
+    border: 1px solid #042408;
+}
+
+.clear {
+    width: 600px;
+    height: 320px;
+}
+
+.export {
+    width: calc(100% - 80px);
+    height: calc(100% - 80px);
+}
+
+.export-detail{
+    padding-left: 10px;
+}
+
+.dialog-title {
+    width: calc(100% - 8px);
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: bold;
+    background-color: darkgreen;
+    color: #f2f6cb;
+    margin-bottom: 25px;
+    text-align: center;
+    padding: 4px;
+}
+
+.dialog-detail {
+    width: 90%;
+    margin-bottom: 25px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.dialog {
+    position: absolute;
+    top: 25px;
+    left: 50px;
+    box-shadow: 13px 13px 15px 16px rgba(1, 1, 1, 0.75);
 }

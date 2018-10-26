@@ -24,7 +24,10 @@
         });
     </script>
 </head>
-<body onmousedown="return false" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();">
+<body ondragstart="return false" draggable="false"
+      ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();"
+      ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"
+      ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();">
 <div class="container">
     <div class="sidebar">
         <div class="side-control-row-title">
@@ -37,17 +40,10 @@
         </div>
         <br/>
         <br/>
-        <div class="side-label">Mode</div>
-        <select onchange="alert(this.value)">
-            <optgroup label="Standard VDG">
-                <option value="sg4">SG4 32 x 16</option>
-                <option value="sg24">SG24 64 x 192</option>
-            </optgroup>
-            <optgroup label="Special Hardware">
-                <option value="cocoVGA">Coco VGA 64 x 32</option>
-            </optgroup>
-        </select>
-        <!--<button onclick="draw()">Test</button>-->
+        <button onclick="showById('clear-dialog')">CLEAR...</button>
+        <br/>
+        <button onclick="showById('export-dialog')">EXPORT...</button>
+        <br/>
         <div class="side-label">Zoom</div>
         <div class="side-control-row">
             <button onclick="zoomIn()" class="mini-button">IN</button>
@@ -62,7 +58,8 @@
         <!--<button onclick="reset()">Reset</button>-->
     </div>
     <div class="main">
-        <div id="grid" class="grid" draggable="false" onmouseleave="state.mouseDown = false;console.log('Mouse Down FALSE')">
+        <div id="grid" class="grid" draggable="false"
+             onmouseleave="state.mouseDown = false;console.log('Mouse Down FALSE')">
 
         </div>
     </div>
@@ -75,6 +72,62 @@
             <div id="sgsel"></div>
             <div id="charsel"></div>
         </div>
+    </div>
+</div>
+
+<!--------------------------------------------------------------------------------------------->
+<div class="clear dialog popup-border" id="clear-dialog">
+    <div class="dialog-title">Clear The Screen</div>
+
+    <div class="dialog-detail">
+        <div class="side-label">Mode</div>
+        <div style="height: 50px">
+            <select onchange="console.log(this.value)">
+                <optgroup label="Standard VDG">
+                    <option value="sg4">SG4 32 x 16</option>
+                    <option value="sg24">SG24 64 x 192</option>
+                </optgroup>
+                <optgroup label="Special Hardware">
+                    <option value="cocoVGA">Coco VGA 64 x 32</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="side-label">Content</div>
+        <div><input type="radio" value="0" checked>
+            <select style="width: 150px" id="cls" name="cls" onchange="clearScreen(this.value)">
+                <option value="80" style="background-color:black;color:white">CLS 0</option>
+                <option value="8f" style="background-color:#09ff08;color:white">CLS 1</option>
+                <option value="9f" style="background-color:#fdff41;color:white">CLS 2</option>
+                <option value="af" style="background-color:#2110b6;color:white">CLS 3</option>
+                <option value="bf" style="background-color:#b50421;color:white">CLS 4</option>
+                <option value="cf" style="background-color:#ffffff;color:black">CLS 5</option>
+                <option value="df" style="background-color:#09d773;color:white">CLS 6</option>
+                <option value="ef" style="background-color:#ff1cff;color:white">CLS 7</option>
+                <option value="ff" style="background-color:#ff4107;color:white">CLS 8</option>
+            </select></div>
+        <br/>
+        <input type="radio" value="1"> Clear with byte <input type="number" min="0" max="255" value="128">
+        <br/>
+        <br/>
+        <input type="radio" value="2"> Test Card
+    </div>
+
+    <div style="display: flex;padding: 5px;">
+        <button onclick="hideById('clear-dialog')">Cancel</button>
+        <button>Clear</button>
+    </div>
+</div>
+<!--------------------------------------------------------------------------------------------->
+<div class="export dialog popup-border" id="export-dialog">
+    <div class="dialog-title">Export</div>
+
+    <div class="export-detail">
+        <textarea cols="130" rows=30 id="screen-export">&nbsp;</textarea>
+    </div>
+
+    <div style="display: flex;padding: 5px;">
+        <button onclick="hideById('export-dialog')">Cancel</button>
+        <button>Clear</button>
     </div>
 </div>
 </body>
