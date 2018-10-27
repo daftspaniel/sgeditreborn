@@ -1,4 +1,4 @@
-function buildGrid(gridWidth, gridHeight) {
+function buildGrid(gridWidth, gridHeight, defaultValue) {
     let data = new Array()
 
 
@@ -8,7 +8,7 @@ function buildGrid(gridWidth, gridHeight) {
             data[column].push({
                 x: column,
                 y: row,
-                value: null
+                value: defaultValue
             })
         }
     }
@@ -17,4 +17,8 @@ function buildGrid(gridWidth, gridHeight) {
 
 function hexToInt(dataval) {
     return parseInt(dataval, 16)
+}
+
+function intToHex(dataval) {
+    return parseInt(dataval).toString(16)
 }

@@ -6,7 +6,7 @@ class Mode {
         this.columns = 10
         this.rows = 10
         this.defaultUnit = 8
-
+        this.defaultValue = '0'
         this.export_csv = this.export_csv.bind(this)
     }
 
@@ -15,11 +15,15 @@ class Mode {
             this.data = JSON.parse(localStorage.screenData)
         }
         else
-            this.data = buildGrid(this.columns, this.rows)
+            this.data = buildGrid(this.columns, this.rows, this.defaultValue)
     }
 
     set(x, y, value) {
         this.data[x][y].value = value
+        this.save()
+    }
+
+    save() {
         localStorage.screenData = JSON.stringify(this.data)
     }
 
@@ -42,11 +46,11 @@ class Mode {
         console.log('DATA LENGTH : ', newdata.length)
         for (let j = 0; j < this.rows; j++) {
             for (let i = 0; i < this.columns; i++) {
-                this.data[i][j].value = newdata[index]
+                this.data[i][j].value = intToHex(newdata[index])
                 index++
             }
         }
-        return csv
+        this.save()
     }
 
     reset_data(value) {
@@ -55,7 +59,7 @@ class Mode {
                 this.data[i][j].value = value
             }
         }
-        localStorage.screenData = JSON.stringify(this.data)
+        this.save()
     }
 
 }
@@ -65,6 +69,7 @@ class SG4Mode extends Mode {
         super()
         this.columns = 32
         this.rows = 16
+        this.defaultValue = '8f'
     }
 }
 

@@ -128,10 +128,10 @@
         <textarea cols="130" rows=10 id="screen-export">&nbsp;</textarea>
     </div>
     <div style="display: flex;padding: 5px;">
-        <button onclick="getById('screen-export').value = state.screen.export_csv()">Get</button>
-        <button onclick="state.screen.import_csv(getById('screen-export').value)">Import</button>
         <button onclick="hideById('export-dialog')">Cancel</button>
-        <button>Download</button>
+        <button onclick="getById('screen-export').value = state.screen.export_csv()">Get</button>
+        <button onclick="state.screen.import_csv(getById('screen-export').value);updateEditorWithData()">Import</button>
+        <button onclick="downloadFile('screen.txt', getById('screen-export').value)">Download</button>
     </div>
 </div>
 </body>

@@ -3,6 +3,18 @@ function reset() {
     container.innerHTML = ''
 }
 
+function updateEditorWithData() {
+    let screen = state.screen
+    let width = screen.columns
+    let height = screen.rows
+    let value = null
+    for (let j = 0; j < height; j++) {
+        for (let i = 0; i < width; i++) {
+            $('#' + i + '-' + j).css('backgroundImage', 'url("grafix/' + screen.data[i][j].value + '.jpg")')
+        }
+    }
+}
+
 function main(state) {
     container = document.getElementById('grid')
     container.innerHTML = ''
@@ -26,6 +38,7 @@ function main(state) {
             newDiv = document.createElement("div")
             newDiv.classList.add('cell')
             newDiv.id = i + '-' + j
+            console.log(newDiv.id)
             newDiv.title = '[' + (i) + ',' + (j) + ']'
             newDiv.draggable = false
             newDiv.addEventListener('ondragstart', (event) => {
