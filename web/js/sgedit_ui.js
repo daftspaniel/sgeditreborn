@@ -23,7 +23,7 @@ function buildCharTable(startIndex, endIndex) {
 
 
 function showGrid() {
-    $('.cell').css('border', '1px solid #111111')
+    $('.cell').css('border', '1px dashed grey')
     $('.cell').css('margin', '0px')
     $('.row').css('margin', '0px')
 }

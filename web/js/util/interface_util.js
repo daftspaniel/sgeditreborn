@@ -1,6 +1,7 @@
 function getImgUrl(char) {
     return 'url("grafix/' + char + '.jpg")'
 }
+
 function getImg(char) {
     return 'grafix/' + char + '.jpg'
 }

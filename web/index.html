@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/util/interface_util.js"></script>
+    <script src="js/util/data_util.js"></script>
+    <script src="js/util/io_util.js"></script>
     <script src="js/sgedit_ui.js"></script>
-    <script src="js/interface_util.js"></script>
-    <script src="js/data_util.js"></script>
     <script src="js/modes.js"></script>
     <script src="js/render.js"></script>
     <script src="js/codegenerator.js"></script>
@@ -128,6 +129,7 @@
     </div>
     <div style="display: flex;padding: 5px;">
         <button onclick="getById('screen-export').value = state.screen.export_csv()">Get</button>
+        <button onclick="state.screen.import_csv(getById('screen-export').value)">Import</button>
         <button onclick="hideById('export-dialog')">Cancel</button>
         <button>Download</button>
     </div>

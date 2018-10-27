@@ -35,6 +35,20 @@ class Mode {
         return csv
     }
 
+    import_csv(csvdata) {
+        let index = 0
+        let newdata = csvdata.replace('\r\n', '').replace('\n', '').replace('\r', '')
+        newdata = newdata.split(',')
+        console.log('DATA LENGTH : ', newdata.length)
+        for (let j = 0; j < this.rows; j++) {
+            for (let i = 0; i < this.columns; i++) {
+                this.data[i][j].value = newdata[index]
+                index++
+            }
+        }
+        return csv
+    }
+
     reset_data(value) {
         for (let j = 0; j < this.rows; j++) {
             for (let i = 0; i < this.columns; i++) {
