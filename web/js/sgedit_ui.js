@@ -21,7 +21,6 @@ function buildCharTable(startIndex, endIndex) {
     return tableHtml
 }
 
-
 function showGrid() {
     $('.cell').css('border', '1px dashed grey')
     $('.cell').css('margin', '0px')

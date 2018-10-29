@@ -153,6 +153,7 @@ select {
 }
 
 .dialog {
+    display: none;
     position: absolute;
     top: 25px;
     left: 50px;

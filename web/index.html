@@ -8,6 +8,7 @@
     <script src="js/util/data_util.js"></script>
     <script src="js/util/io_util.js"></script>
     <script src="js/sgedit_ui.js"></script>
+    <script src="js/sgedit_operations.js"></script>
     <script src="js/modes.js"></script>
     <script src="js/render.js"></script>
     <script src="js/codegenerator.js"></script>
@@ -96,8 +97,8 @@
             </select>
         </div>
         <div class="side-label">Content</div>
-        <div><input type="radio" value="0" checked>
-            <select style="width: 150px" id="cls" name="cls" onchange="clearScreen(this.value)">
+        <div><input id="cls-option-basic" type="radio" name="clear-type" value="0" checked>
+            <select style="width: 150px" id="cls" name="cls" onchange="alert(getById('cls').value)">
                 <option value="80" style="background-color:black;color:white">CLS 0</option>
                 <option value="8f" style="background-color:#09ff08;color:white">CLS 1</option>
                 <option value="9f" style="background-color:#fdff41;color:white">CLS 2</option>
@@ -109,15 +110,16 @@
                 <option value="ff" style="background-color:#ff4107;color:white">CLS 8</option>
             </select></div>
         <br/>
-        <input type="radio" value="1"> Clear with byte <input type="number" min="0" max="255" value="128">
+        <input type="radio" name="clear-type" value="1"> Clear with byte <input type="number" min="0" max="255"
+                                                                                value="128">
         <br/>
         <br/>
-        <input type="radio" value="2"> Test Card
+        <input type="radio" name="clear-type" value="2"> Test Card
     </div>
 
     <div style="display: flex;padding: 5px;">
         <button onclick="hideById('clear-dialog')">Cancel</button>
-        <button onclick="state.screen.reset_data('89')">Clear</button>
+        <button onclick="clearScreen()">Clear</button>
     </div>
 </div>
 <!--------------------------------------------------------------------------------------------->
@@ -134,5 +136,6 @@
         <button onclick="downloadFile('screen.txt', getById('screen-export').value)">Download</button>
     </div>
 </div>
+<!--------------------------------------------------------------------------------------------->
 </body>
 </html>

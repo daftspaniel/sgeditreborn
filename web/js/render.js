@@ -1,5 +1,5 @@
 function reset() {
-    container = document.getElementById('grid')
+    container = getById('grid')
     container.innerHTML = ''
 }
 
@@ -16,7 +16,7 @@ function updateEditorWithData() {
 }
 
 function main(state) {
-    container = document.getElementById('grid')
+    container = getById('grid')
     container.innerHTML = ''
     container.draggable = false
 
@@ -38,7 +38,6 @@ function main(state) {
             newDiv = document.createElement("div")
             newDiv.classList.add('cell')
             newDiv.id = i + '-' + j
-            console.log(newDiv.id)
             newDiv.title = '[' + (i) + ',' + (j) + ']'
             newDiv.draggable = false
             newDiv.addEventListener('ondragstart', (event) => {
