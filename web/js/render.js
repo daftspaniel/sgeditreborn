@@ -20,11 +20,12 @@ function main(state) {
     container.innerHTML = ''
     container.draggable = false
 
-    let screen = state.screen
-    let width = screen.columns
-    let height = screen.rows
-    let cellWidth = state.unit + 'px'
-    let cellHeight = state.unit * 1.5 + 'px'
+    const backgroundSize = state.unit + 'px ' + (state.unit * 1.5) + 'px'
+    const screen = state.screen
+    const width = screen.columns
+    const height = screen.rows
+    const cellWidth = state.unit + 'px'
+    const cellHeight = state.unit * 1.5 + 'px'
     let rowDiv = null
     let newDiv = null
 
@@ -49,7 +50,7 @@ function main(state) {
             else
                 newDiv.style.backgroundImage = 'url("grafix/60.jpg")'
 
-            newDiv.style.backgroundSize = state.unit + 'px ' + (state.unit * 1.5) + 'px'
+            newDiv.style.backgroundSize = backgroundSize
             newDiv.style.height = cellHeight
             newDiv.style.width = cellWidth
 
@@ -57,12 +58,12 @@ function main(state) {
                 state.actingBlock = event.button === 0 ? state.primary : state.secondary
                 state.actionOnBlock([i, j], '#' + i + '-' + j, state.actingBlock)
                 state.mouseDown = true
-                console.log('Mouse Down TRUE')
+                //console.log('Mouse Down TRUE')
                 return false
             })
 
             newDiv.addEventListener('mouseenter', (event) => {
-                console.log('ENTERING')
+                //console.log('ENTERING')
                 if (state.mouseDown)
                     state.actionOnBlock([i, j], '#' + i + '-' + j, state.actingBlock)
                 return false
@@ -70,7 +71,7 @@ function main(state) {
 
             newDiv.addEventListener('mouseup', (event) => {
                 state.mouseDown = false
-                console.log('Mouse Down FALSE')
+                //console.log('Mouse Down FALSE')
                 return false
             })
             newDiv.addEventListener('contextmenu', event => event.preventDefault())
