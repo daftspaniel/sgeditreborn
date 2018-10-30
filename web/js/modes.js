@@ -10,8 +10,8 @@ class Mode {
         this.export_csv = this.export_csv.bind(this)
     }
 
-    init() {
-        if (localStorage.screenData) {
+    init(skipStorage) {
+        if (!skipStorage && localStorage.screenData) {
             this.data = JSON.parse(localStorage.screenData)
         }
         else
@@ -43,7 +43,7 @@ class Mode {
         let index = 0
         let newdata = csvdata.replace('\r\n', '').replace('\n', '').replace('\r', '')
         newdata = newdata.split(',')
-        console.log('DATA LENGTH : ', newdata.length)
+
         for (let j = 0; j < this.rows; j++) {
             for (let i = 0; i < this.columns; i++) {
                 this.data[i][j].value = intToHex(newdata[index])
@@ -57,6 +57,18 @@ class Mode {
         for (let j = 0; j < this.rows; j++) {
             for (let i = 0; i < this.columns; i++) {
                 this.data[i][j].value = value
+            }
+        }
+        this.save()
+    }
+
+    set_testcard() {
+        let char = 0
+        for (let j = 0; j < this.rows; j++) {
+            for (let i = 0; i < this.columns; i++) {
+                this.data[i][j].value = intToHex(char)
+                char++
+                if (char > 255) char = 0
             }
         }
         this.save()
@@ -78,6 +90,7 @@ class SG24Mode extends Mode {
         super()
         this.columns = 64
         this.rows = 192
+        this.defaultValue = '00'
     }
 }
 

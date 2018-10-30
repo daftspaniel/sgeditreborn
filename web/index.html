@@ -46,7 +46,7 @@
         <br/>
         <button onclick="showById('clear-dialog')">CLEAR...</button>
         <br/>
-        <button onclick="showById('export-dialog')">EXPORT...</button>
+        <button onclick="startExport()">EXPORT...</button>
         <br/>
         <div class="side-label">Zoom</div>
         <div class="side-control-row">
@@ -86,7 +86,7 @@
     <div class="dialog-detail">
         <div class="side-label">Mode</div>
         <div style="height: 50px">
-            <select onchange="console.log(this.value)">
+            <select id="screen-mode">
                 <optgroup label="Standard VDG">
                     <option value="sg4">SG4 32 x 16</option>
                     <option value="sg24">SG24 64 x 192</option>
@@ -97,8 +97,8 @@
             </select>
         </div>
         <div class="side-label">Content</div>
-        <div><input id="cls-option-basic" type="radio" name="clear-type" value="0" checked>
-            <select style="width: 150px" id="cls" name="cls" Xonchange="alert(getById('cls').value)">
+        <div><label><input id="cls-option-basic" type="radio" name="clear-type" value="0" checked> CLS
+            <select style="width: 150px" id="cls" name="cls">
                 <option value="80" style="background-color:black;color:white">CLS 0</option>
                 <option value="8f" style="background-color:#09ff08;color:white">CLS 1</option>
                 <option value="9f" style="background-color:#fdff41;color:white">CLS 2</option>
@@ -108,14 +108,14 @@
                 <option value="df" style="background-color:#09d773;color:white">CLS 6</option>
                 <option value="ef" style="background-color:#ff1cff;color:white">CLS 7</option>
                 <option value="ff" style="background-color:#ff4107;color:white">CLS 8</option>
-            </select></div>
+            </select></div></label>
         <br/>
-        <input id="cls-option-byte" type="radio" name="clear-type" value="1"> Clear with byte <input id="cls-byte"
+        <label><input id="cls-option-byte" type="radio" name="clear-type" value="1"> Clear with byte <input id="cls-byte"
                                                                                                      type="number" min="0" max="255"
-                                                                                value="128">
+                                                                                value="128"></label>
         <br/>
         <br/>
-        <input type="radio" name="clear-type" value="2"> Test Card
+        <label><input id="cls-test-card" type="radio" name="clear-type" value="2"> Test Card</label>
     </div>
 
     <div style="display: flex;padding: 5px;">
@@ -128,11 +128,10 @@
     <div class="dialog-title">Export</div>
 
     <div class="export-detail">
-        <textarea cols="130" rows=10 id="screen-export">&nbsp;</textarea>
+        <textarea cols="145" rows="18" id="screen-export">&nbsp;</textarea>
     </div>
     <div style="display: flex;padding: 5px;">
         <button onclick="hideById('export-dialog')">Cancel</button>
-        <button onclick="getById('screen-export').value = state.screen.export_csv()">Get</button>
         <button onclick="state.screen.import_csv(getById('screen-export').value);updateEditorWithData()">Import</button>
         <button onclick="downloadFile('screen.txt', getById('screen-export').value)">Download</button>
     </div>

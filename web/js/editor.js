@@ -15,6 +15,9 @@ class Editor {
         if (mode === 'sg4') {
             this.screen = new SG4Mode()
         }
+        else if (mode === 'sg24') {
+            this.screen = new SG24Mode()
+        }
         else if (mode === 'cocoVGA') {
             this.screen = new CocoVGAMode()
         }
@@ -22,7 +25,7 @@ class Editor {
             alert('error - mode request -' + mode)
             return
         }
-        this.screen.init()
+        this.screen.init(true)
     }
 
     setChar(event, char) {
