@@ -19,7 +19,13 @@ function main(state) {
     container = getById('grid')
     container.innerHTML = ''
     container.draggable = false
-
+    mainWin = getById('main')
+    if (mainWin) {
+        mainWin.scrollTop = 0
+        mainWin.scrollLeft = 0
+    }else{
+        console.log('POP')
+    }
     const backgroundSize = state.unit + 'px ' + (state.unit * 1.5) + 'px'
     const screen = state.screen
     const width = screen.columns
