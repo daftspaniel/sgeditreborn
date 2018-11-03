@@ -22,7 +22,8 @@
             constructCharset()
 
             state = new Editor()
-            state.initMode('sg4')
+            state.initMode()
+            state.screen.loadFromStorage()
             state.initGUIState()
             main(state)
         });
@@ -136,6 +137,8 @@
         <button onclick="downloadFile('screen.txt', getById('screen-export').value)">Download</button>
     </div>
 </div>
+<!--------------------------------------------------------------------------------------------->
+<div class="please-wait" id="please-wait">Please Wait...</div>
 <!--------------------------------------------------------------------------------------------->
 </body>
 </html>

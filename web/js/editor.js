@@ -12,6 +12,15 @@ class Editor {
     }
 
     initMode(mode) {
+        if (!mode) {
+            mode = localStorage.mode ? localStorage.mode : 'sg4'
+        }
+        else {
+            localStorage.mode = mode
+        }
+
+        console.log('Setting Mode', mode)
+
         if (mode === 'sg4') {
             this.screen = new SG4Mode()
         }

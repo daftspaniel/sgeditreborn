@@ -129,7 +129,7 @@ select {
     height: calc(100% - 80px);
 }
 
-.export-detail{
+.export-detail {
     padding-left: 10px;
 }
 
@@ -159,4 +159,15 @@ select {
     left: 50px;
     box-shadow: 13px 13px 15px 16px rgba(1, 1, 1, 0.75);
     overflow: hidden;
+}
+
+.please-wait {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    left: 0;
+    background-color: #2110b6;
+    color: #f2f6cb;
 }

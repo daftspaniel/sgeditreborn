@@ -12,10 +12,17 @@ class Mode {
 
     init(skipStorage) {
         if (!skipStorage && localStorage.screenData) {
+            console.log('LOADING SCREEN DATA')
             this.data = JSON.parse(localStorage.screenData)
         }
-        else
+        else {
+            console.log('BUILDING GRID')
             this.data = buildGrid(this.columns, this.rows, this.defaultValue)
+        }
+    }
+
+    loadFromStorage(){
+        this.data = JSON.parse(localStorage.screenData)
     }
 
     set(x, y, value) {

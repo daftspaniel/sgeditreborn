@@ -14,6 +14,7 @@ function clearScreen() {
     else if (getById('cls-test-card').checked) {
         state.screen.set_testcard()
     }
+
     main(state)
     updateEditorWithData()
     hideById('clear-dialog')
