@@ -46,6 +46,16 @@ class Mode {
         return csv
     }
 
+
+    export_basic() {
+        return 'BASIC!'
+    }
+
+
+    export_assembly() {
+       return 'ASSEMBLY!'
+    }
+
     import_csv(csvdata) {
         let index = 0
         let newdata = csvdata.replace('\r\n', '').replace('\n', '').replace('\r', '')

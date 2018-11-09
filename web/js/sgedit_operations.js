@@ -22,5 +22,25 @@ function clearScreen() {
 
 function startExport() {
     showById('export-dialog')
-    getById('screen-export').value = state.screen.export_csv()
+    changeExportType('1')
+}
+
+function changeExportType(type) {
+    let textBox = getById('screen-export')
+    type = parseInt(type)
+    hideById('import-button')
+    if (type === 1) {
+        textBox.value = state.screen.export_csv()
+        showById('import-button')
+    } else if (type === 2) {
+        textBox.value = state.screen.export_basic()
+    } else if (type === 3) {
+        textBox.value = state.screen.export_assembly()
+    }
+    else (alert(type))
+}
+
+function importCsvData() {
+    state.screen.import_csv(getById('screen-export').value);
+    updateEditorWithData()
 }
