@@ -100,6 +100,7 @@ class SG4Mode extends Mode {
         this.columns = 32
         this.rows = 16
         this.defaultValue = '8f'
+        this.defaultUnit = 20
     }
 }
 

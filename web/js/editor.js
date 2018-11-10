@@ -2,7 +2,6 @@ class Editor {
     constructor() {
         this.primary = localStorage.primaryChar ? localStorage.primaryChar : '8f'
         this.secondary = localStorage.secondaryChar ? localStorage.secondaryChar : '80'
-        this.unit = localStorage.unit ? parseInt(localStorage.unit) : 8
         this.mouseDown = false
     }
 
@@ -23,6 +22,7 @@ class Editor {
 
         if (mode === 'sg4') {
             this.screen = new SG4Mode()
+            this.unit = localStorage.unit ? parseInt(localStorage.unit) : this.screen.defaultUnit
         }
         else if (mode === 'sg24') {
             this.screen = new SG24Mode()
