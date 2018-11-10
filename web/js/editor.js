@@ -10,7 +10,8 @@ class Editor {
         this.setSecondaryChar(this.secondary)
     }
 
-    initMode(mode) {
+    initMode(mode, cls) {
+        console.log('Init Mode', mode)
         if (!mode) {
             mode = localStorage.mode ? localStorage.mode : 'sg4'
         }
@@ -18,7 +19,7 @@ class Editor {
             localStorage.mode = mode
         }
 
-        console.log('Setting Mode', mode)
+        console.log('Setting up mode :', mode)
 
         if (mode === 'sg4') {
             this.screen = new SG4Mode()
@@ -34,7 +35,7 @@ class Editor {
             alert('error - mode request -' + mode)
             return
         }
-        this.screen.init(true)
+        this.screen.init(cls)
     }
 
     setChar(event, char) {

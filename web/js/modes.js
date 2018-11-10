@@ -11,9 +11,10 @@ class Mode {
     }
 
     init(skipStorage) {
+        console.log('Init - skipStorage: ',skipStorage)
         if (!skipStorage && localStorage.screenData) {
             console.log('LOADING SCREEN DATA')
-            this.data = JSON.parse(localStorage.screenData)
+            this.loadFromStorage()
         }
         else {
             console.log('BUILDING GRID')
@@ -23,6 +24,7 @@ class Mode {
     }
 
     loadFromStorage(){
+        console.log('Loading from storage')
         this.data = JSON.parse(localStorage.screenData)
     }
 

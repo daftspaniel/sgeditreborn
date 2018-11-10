@@ -4,6 +4,7 @@ function reset() {
 }
 
 function updateEditorWithData() {
+    console.log('Update Editor With Data')
     let screen = state.screen
     let width = screen.columns
     let height = screen.rows

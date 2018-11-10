@@ -1,7 +1,7 @@
 function clearScreen() {
 
     let newMode = getById('screen-mode').value
-    state.initMode(newMode)
+    state.initMode(newMode, true)
 
     if (getById('cls-option-basic').checked) {
         let requestedValue = getById('cls').value
