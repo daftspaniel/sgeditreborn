@@ -18,6 +18,7 @@ class Mode {
         else {
             console.log('BUILDING GRID')
             this.data = buildGrid(this.columns, this.rows, this.defaultValue)
+            this.save()
         }
     }
 
