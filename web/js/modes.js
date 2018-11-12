@@ -11,7 +11,7 @@ class Mode {
     }
 
     init(skipStorage) {
-        console.log('Init - skipStorage: ',skipStorage)
+        console.log('Init - skipStorage: ', skipStorage)
         if (!skipStorage && localStorage.screenData) {
             console.log('LOADING SCREEN DATA')
             this.loadFromStorage()
@@ -23,7 +23,7 @@ class Mode {
         }
     }
 
-    loadFromStorage(){
+    loadFromStorage() {
         console.log('Loading from storage')
         this.data = JSON.parse(localStorage.screenData)
     }
@@ -51,12 +51,32 @@ class Mode {
 
 
     export_basic() {
-        return 'BASIC!'
+        const noval = 60;	//hex
+        let fullcode = '10 CLEAR2000:DIMT,A:CLS\r\n'
+        fullcode += '20 FORT=1024TO1535:READA:POKET,A:NEXT\r\n'
+        fullcode += '30 A$=INKEY$:IFA$="" THEN 30\r\n'
+
+        let lineNo = 100
+        let dataval
+
+        for (var j = 0; j < this.rows; j++) {
+            var dataline = "DATA" + String.fromCharCode(32)
+            for (var i = 0; i < this.columns; i++) {
+                dataval = parseInt(this.data[i][j].value, 16)
+                dataline += dataval + ","
+            }
+            dataline = lineNo + ' ' + dataline.substr(0, dataline.length - 1) + String.fromCharCode(13)
+
+            fullcode += dataline
+            lineNo += 10
+        }
+        var progend = "\r\n"
+        return fullcode + progend
     }
 
 
     export_assembly() {
-       return 'ASSEMBLY!'
+        return 'ASSEMBLY!'
     }
 
     import_csv(csvdata) {
