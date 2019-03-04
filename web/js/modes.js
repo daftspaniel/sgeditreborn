@@ -76,7 +76,7 @@ class Mode {
 
 
     export_assembly() {
-        return 'ASSEMBLY!'
+        return 'ASSEMBLY COMING SOON...'
     }
 
     import_csv(csvdata) {

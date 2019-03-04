@@ -16,17 +16,25 @@ function updateEditorWithData() {
     }
 }
 
-function main(state) {
+function initContainer() {
     container = getById('grid')
     container.innerHTML = ''
     container.draggable = false
+}
+
+function initMainWin() {
     mainWin = getById('main')
     if (mainWin) {
         mainWin.scrollTop = 0
         mainWin.scrollLeft = 0
-    }else{
-        console.log('POP')
+    } else {
+        console.log('Cannot find mainWin.')
     }
+}
+
+function main(state) {
+    initContainer()
+    initMainWin()
     const backgroundSize = state.unit + 'px ' + (state.unit * 1.5) + 'px'
     const screen = state.screen
     const width = screen.columns
