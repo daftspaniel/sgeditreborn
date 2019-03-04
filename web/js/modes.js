@@ -138,6 +138,16 @@ class Mode {
         this.save()
     }
 
+    flip() {
+        for (let j = 0; j < this.rows; j++) {
+            let tmp = this.data[0][j].value
+            for (let i = 1; i < this.columns; i++) {
+                this.data[i - 1][j].value = this.data[i][j].value
+            }
+            this.data[31][j].value = tmp
+        }
+        this.save()
+    }
 }
 
 class SG4Mode extends Mode {

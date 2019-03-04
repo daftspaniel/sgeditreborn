@@ -33,6 +33,11 @@ function hideGrid() {
     $('.row').css('margin', '')
 }
 
+function flip() {
+    state.screen.flip()
+    updateEditorWithData()
+}
+
 function zoomReset() {
     state.unit = state.screen.defaultUnit
     updateZoom()
