@@ -51,9 +51,15 @@ function updateZoom() {
         state.unit = 60
     }
     console.log(state.unit)
-    $('.row').css('height', state.unit * 1.5 + 'px')
+    let height = state.unit * 1.5 + 'px'
+    // if (state.screen.customCellHeight)
+    //     height = Math.floor(state.unit/4) + 'px'
+    console.log('ZOOM Height', height)
+
+    $('.row').css('height', height)
+    $('.cell').css('height', height)
+
     $('.cell').css('width', state.unit + 'px')
-    $('.cell').css('height', state.unit * 1.5 + 'px')
     $('.cell').css('background-size', state.unit + 'px ' + (state.unit * 1.5) + 'px')
 
     localStorage.unit = state.unit

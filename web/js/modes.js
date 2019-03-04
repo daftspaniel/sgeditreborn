@@ -15,8 +15,7 @@ class Mode {
         if (!skipStorage && localStorage.screenData) {
             console.log('LOADING SCREEN DATA')
             this.loadFromStorage()
-        }
-        else {
+        } else {
             console.log('BUILDING GRID')
             this.data = buildGrid(this.columns, this.rows, this.defaultValue)
             this.save()
@@ -76,7 +75,32 @@ class Mode {
 
 
     export_assembly() {
-        return 'ASSEMBLY COMING SOON...'
+        const noval = 60;	//hex
+        let fcbval, charval, line
+        let fullASMCode = "        ORG $4E21\r\n" +
+            "        PSHS X,Y,U,A,B\r\n" +
+            "        \r\n" +
+            "        LDX #$400\r\n" +
+            "        LDY #TSB\r\n" +
+            "        \r\n" +
+            "DRAW    LDD ,Y++\r\n" +
+            "        STD ,X++\r\n" +
+            "        CMPX #$600\r\n" +
+            "        BNE DRAW\r\n" +
+            "        \r\n" +
+            "EXIT    PULS X,Y,U,A,B\r\n" +
+            "        RTS ; EXIT PROGRAM\r\n\r\n"
+        let data = ''
+        for (let j = 0; j < this.rows; j++) {
+            line = String.fromCharCode(9) + "fcb" + String.fromCharCode(9);
+            for (let i = 0; i < this.columns; i++) {
+                console.log(i, j, parseInt(this.data[i][j].value, 16))
+                fcbval = '$' + parseInt(this.data[i][j].value, 16) + ','
+                line += fcbval
+            }
+            fullASMCode += line + "\r\n"
+        }
+        return fullASMCode
     }
 
     import_csv(csvdata) {
@@ -132,6 +156,7 @@ class SG24Mode extends Mode {
         this.columns = 64
         this.rows = 192
         this.defaultValue = '00'
+        this.customCellHeight = 1
     }
 }
 

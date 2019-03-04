@@ -40,14 +40,17 @@ function main(state) {
     const width = screen.columns
     const height = screen.rows
     const cellWidth = state.unit + 'px'
-    const cellHeight = state.unit * 1.5 + 'px'
+    let cellHeight = state.unit * 1.5 + 'px'
     let rowDiv = null
     let newDiv = null
 
+    if (state.screen.customCellHeight) cellHeight = state.screen.customCellHeight + 'px'
+    console.log('cellHeight', cellHeight)
     for (let j = 0; j < height; j++) {
         rowDiv = document.createElement("div")
         rowDiv.classList.add('row')
         rowDiv.style.height = cellHeight
+        //rowDiv.style.maxHeight = cellHeight
         rowDiv.draggable = false
 
         for (let i = 0; i < width; i++) {
@@ -67,6 +70,7 @@ function main(state) {
 
             newDiv.style.backgroundSize = backgroundSize
             newDiv.style.height = cellHeight
+            //  newDiv.style.maxHeight = cellHeight
             newDiv.style.width = cellWidth
 
             newDiv.addEventListener('mousedown', (event) => {

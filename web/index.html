@@ -91,10 +91,10 @@
             <select id="screen-mode">
                 <optgroup label="Standard VDG">
                     <option value="sg4">SG4 32 x 16</option>
-                    <option value="sg24">SG24 64 x 192</option>
+                    <option value="sg24">SG24 64 x 192 - BETA Version - use at own risk!</option>
                 </optgroup>
                 <optgroup label="Special Hardware">
-                    <option value="cocoVGA">Coco VGA 64 x 32</option>
+                    <option value="cocoVGA">Coco VGA 64 x 32- BETA Version - use at own risk!</option>
                 </optgroup>
             </select>
         </div>
@@ -128,16 +128,17 @@
 <!--------------------------------------------------------------------------------------------->
 <div class="export dialog popup-border" id="export-dialog">
     <div class="dialog-title">Export</div>
-    <div style="display: flex;padding: 5px;">
-        <select id="type" onchange="changeExportType(this.value)">
+    <div style="padding: 5px;display: flex">
+        <select id="type" onchange="changeExportType(this.value)" style="width: 125px;height:40px;">
             <option value="1">CSV</option>
             <option value="2">Basic</option>
             <option value="3">Assembly</option>
         </select>
-        <button id ="import-button" onclick="importCsvData()">Import</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id ="import-button" style="width: 125px;padding:10px;height:40px" onclick="importCsvData()">Import</button>
     </div>
     <div class="export-detail">
-        <textarea cols="145" rows="18" id="screen-export">&nbsp;</textarea>
+        <textarea cols="188" rows="35" id="screen-export" style="font-size: 8pt">&nbsp;</textarea>
     </div>
     <div style="display: flex;padding: 5px;">
         <button onclick="hideById('export-dialog')">Cancel</button>
