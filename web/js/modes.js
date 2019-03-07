@@ -138,13 +138,62 @@ class Mode {
         this.save()
     }
 
-    flip() {
+    scrollUp() {
+        let tmp = []
+        for (let i = 0; i < this.columns; i++) {
+            tmp.push(this.data[i][0].value)
+        }
+
+        for (let j = 0; j < this.rows - 1; j++) {
+            for (let i = 0; i < this.columns; i++) {
+                this.data[i][j].value = this.data[i][j + 1].value
+            }
+        }
+
+        for (let i = 0; i < this.columns; i++) {
+            this.data[i][15].value = tmp[i]
+        }
+
+        this.save()
+    }
+
+    scrollDown() {
+        let tmp = []
+        for (let i = 0; i < this.columns; i++) {
+            tmp.push(this.data[i][15].value)
+        }
+
+        for (let j = this.rows - 1; j > 0; j--) {
+            for (let i = 0; i < this.columns; i++) {
+                this.data[i][j].value = this.data[i][j - 1].value
+            }
+        }
+
+        for (let i = 0; i < this.columns; i++) {
+            this.data[i][0].value = tmp[i]
+        }
+
+        this.save()
+    }
+
+    scrollLeft() {
         for (let j = 0; j < this.rows; j++) {
             let tmp = this.data[0][j].value
             for (let i = 1; i < this.columns; i++) {
                 this.data[i - 1][j].value = this.data[i][j].value
             }
             this.data[31][j].value = tmp
+        }
+        this.save()
+    }
+
+    scrollRight() {
+        for (let j = 0; j < this.rows; j++) {
+            let tmp = this.data[this.columns - 1][j].value
+            for (let i = this.columns - 1; i > 0; i--) {
+                this.data[i][j].value = this.data[i - 1][j].value
+            }
+            this.data[0][j].value = tmp
         }
         this.save()
     }

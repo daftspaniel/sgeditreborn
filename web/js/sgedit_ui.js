@@ -33,8 +33,22 @@ function hideGrid() {
     $('.row').css('margin', '')
 }
 
-function flip() {
-    state.screen.flip()
+function scrollUp() {
+    state.screen.scrollUp()
+    updateEditorWithData()
+}
+function scrollDown() {
+    state.screen.scrollDown()
+    updateEditorWithData()
+}
+
+function scrollScreenLeft() {
+    state.screen.scrollLeft()
+    updateEditorWithData()
+}
+
+function scrollRight() {
+    state.screen.scrollRight()
     updateEditorWithData()
 }
 
