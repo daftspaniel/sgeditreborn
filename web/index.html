@@ -35,7 +35,7 @@
       ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();"
       ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"
       ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();">
-      <div style="background-color: #b50421;color:white;position: absolute;top: 15px;left: 35px;">BETA</div>
+      <div style="background-color: #b50421;color:white;position: absolute;top: 15px;left: 35px;padding:10px">BETA</div>
 <div class="container">
     <div class="sidebar">
         <div class="side-control-row-title">
@@ -45,8 +45,12 @@
             <img src="grafix/4.jpg"/>
             <img src="grafix/9.jpg"/>
             <img src="grafix/14.jpg"/>
+            <img src="grafix/33.jpg"/>
         </div>
-        <br/>
+        <div class="about-row">
+            <button style="text-align: center;" onclick="showById('about-dialog')">ABOUT</button>
+        </div>
+        <br/> 
         <br/>
         <button onclick="showById('clear-dialog')">CLEAR...</button>
         <br/>
@@ -135,6 +139,54 @@
         <button onclick="clearScreen()">Clear</button>
     </div>
 </div>
+<!--------------------------------------------------------------------------------------------->
+<div id="about-dialog" class="aboutwindow">
+    <p style="font-size: 16px">
+    <h2>COCO II SG editor by Simon Jonassen 2014/16</h2>
+    <h3>Updates By Davy Mitchell 2018/2019</h3>
+    <b>Please raise Issues and Features on</b> 
+    <a style="font-size: large"
+    href="https://github.com/daftspaniel/sgeditreborn">GitHub</a>
+    </p>
+    <div style="border:1px solid grey;background-color:lightgoldenrodyellow;max-height:140px;overflow-y:scroll;margin-left: 25px;margin-right: 25px;text-align: left;margin-bottom: 30px">
+        <b>Version 3.0</b><br/>
+        <ul>
+            <li>New interface with better zoom.</li>
+            <li>Right mouse button has secondary block.</li>
+            <li>Scroll screen in 4 directions.</li>
+            <li>Experimental CocoVGA support.</li>
+            <li>Updated Clear dialog.</li>
+        </ul>
+        <b>Version 2.3</b><br/>
+        <ul>
+            <li>Fix the tooltips on character palettes.</li>
+        </ul>
+        <b>Version 2.2</b><br/>
+        <ul>
+            <li>Selected Character now highlighted in palette.</li>
+            <li>Assembly output now has a display routine.</li>
+            <li>CSV import/export/edit.</li>
+            <li>Safety prompt before CLS.</li>
+            <li>Moved to GitLab.</li>
+        </ul>
+        <b>Version 2.1</b><br/>
+        <ul>
+            <li>Screen and settings now persisted (locally).</li>
+            <li>ASM/BASIC now have a button to download files</li>
+            <li>Keys WASD change the selected block</li>
+            <li>Gridlines now contrast better especially CLS0</li>
+            <li>Images should all be crisper</li>
+            <li>Preview image larger</li>
+            <li>Massive refactor of the code</li>
+            <li>About box added</li>
+            <li>New layout of toolbars for future features</li>
+        </ul>
+    </div>
+    <div style="text-align: center;margin-top: 5px">
+        <button onclick="hideById('about-dialog')">Close</button>&nbsp;&nbsp;
+    </div>
+</div>
+
 <!--------------------------------------------------------------------------------------------->
 <div class="export dialog popup-border" id="export-dialog">
     <div class="dialog-title">Export</div>

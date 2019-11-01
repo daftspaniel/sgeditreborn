@@ -108,6 +108,13 @@ select {
 .side-control-row-title {
     display: flex;
     width: calc(100% - 10px);
+    text-align: center;
+    align-items: center;
+}
+
+.about-row {
+    width: 100%;
+    text-align: center;
 }
 
 .mini-button {
@@ -170,4 +177,20 @@ select {
     left: 0;
     background-color: #2110b6;
     color: #f2f6cb;
+}
+
+.aboutwindow {
+    display: none;
+    position: absolute;
+    top: 40px;
+    margin-left:calc(50vw - 250px);
+    width: 500px;
+    height: 350px;
+    overflow: auto;
+    overflow-y: hidden;
+    font-size: 8pt;
+    border: 10px solid rgb(55, 89, 129);
+    background-color: beige;
+    text-align: center;
+    z-index: 10000;
 }
