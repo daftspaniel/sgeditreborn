@@ -89,18 +89,17 @@ class Mode {
             "        BNE DRAW\r\n" +
             "        \r\n" +
             "EXIT    PULS X,Y,U,A,B\r\n" +
-            "        RTS ; EXIT PROGRAM\r\n\r\n"
+            "        RTS ; EXIT PROGRAM\r\n\r\nTSB    "
         let data = ''
         for (let j = 0; j < this.rows; j++) {
-            line = String.fromCharCode(9) + "fcb" + String.fromCharCode(9);
+            line = String.fromCharCode(9) + "FCB    "
             for (let i = 0; i < this.columns; i++) {
-                console.log(i, j, parseInt(this.data[i][j].value, 16))
-                fcbval = '$' + parseInt(this.data[i][j].value, 16) + ','
+                fcbval = '$' + this.data[i][j].value + ','
                 line += fcbval
             }
-            fullASMCode += line + "\r\n"
+            fullASMCode += line.substr(0, line.length - 1) + "\r\n"
         }
-        return fullASMCode
+        return fullASMCode.substring(0)
     }
 
     import_csv(csvdata) {

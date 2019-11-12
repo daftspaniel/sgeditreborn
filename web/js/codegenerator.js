@@ -19,7 +19,7 @@ function constructFcb() {
     let data = '';
 
     for (var j = 0; j < 16; j++) {
-        var fcbline = String.fromCharCode(9) + "fcb" + String.fromCharCode(9);
+        var fcbline = String.fromCharCode(9) + "FCB" + String.fromCharCode(9);
         for (var i = j * 32; i < j * 32 + 32; i++) {
             var temp = getById("pixel_" + i).innerHTML;
             if (temp === "&nbsp;") {
