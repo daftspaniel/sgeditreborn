@@ -52,6 +52,16 @@ function scrollRight() {
     updateEditorWithData()
 }
 
+function mirrorLtoR(){
+    state.screen.mirrorLtoR()
+    updateEditorWithData()
+}
+
+function mirrorRtoL(){
+    state.screen.mirrorRtoL()
+    updateEditorWithData()
+}
+
 function zoomReset() {
     state.unit = state.screen.defaultUnit
     updateZoom()

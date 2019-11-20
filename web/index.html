@@ -37,22 +37,7 @@
       <div style="background-color: #b50421;color:white;position: absolute;top: 15px;left: 35px;padding:10px">BETA</div>
 <div class="container">
     <div class="sidebar">
-        <div class="side-control-row-title">
-            <img src="grafix/13.jpg"/>
-            <img src="grafix/7.jpg"/>
-            <img src="grafix/5.jpg"/>
-            <img src="grafix/4.jpg"/>
-            <img src="grafix/9.jpg"/>
-            <img src="grafix/14.jpg"/>
-            <img src="grafix/33.jpg"/>
-        </div>
-        <div class="about-row">
-            <button style="text-align: center;" onclick="showById('about-dialog')">ABOUT</button>
-        </div>
-        <br/> 
-        <br/>
         <button onclick="showById('clear-dialog')">CLEAR...</button>
-        <br/>
         <button onclick="startExport()">EXPORT...</button>
         <br/>
         <div class="side-label">Zoom</div>
@@ -74,6 +59,23 @@
         <div class="side-control-row">
             <button onclick="scrollScreenLeft()">Left</button>
             <button onclick="scrollRight()">Right</button>
+        </div>
+        <div class="side-label">Mirror</div>
+        <div class="side-control-row">
+            <button onclick="mirrorLtoR()">L to R</button>
+            <button onclick="mirrorRtoL()">R to L</button>
+        </div>
+        <div class="side-control-row-title">
+            <img src="grafix/13.jpg"/>
+            <img src="grafix/7.jpg"/>
+            <img src="grafix/5.jpg"/>
+            <img src="grafix/4.jpg"/>
+            <img src="grafix/9.jpg"/>
+            <img src="grafix/14.jpg"/>
+            <img src="grafix/33.jpg"/>
+        </div>        
+        <div class="about-row">
+            <button style="text-align: center;" onclick="showById('about-dialog')">ABOUT</button>
         </div>
     </div>
     <div class="main" id="main">
@@ -148,6 +150,10 @@
     href="https://github.com/daftspaniel/sgeditreborn">GitHub</a>
     </p>
     <div style="border:1px solid grey;background-color:lightgoldenrodyellow;max-height:140px;overflow-y:scroll;margin-left: 25px;margin-right: 25px;text-align: left;margin-bottom: 30px">
+        <b>Version 3.0.2</b><br/>
+        <ul>
+            <li>Added Mirror feature.</li>
+        </ul>
         <b>Version 3.0.1</b><br/>
         <ul>
             <li>Fixed Assembly output.</li>

@@ -196,6 +196,30 @@ class Mode {
         }
         this.save()
     }
+
+    mirrorLtoR() {
+        const midPoint = this.columns / 2
+        const endPoint = this.columns - 1
+
+        for (let j = 0; j < this.rows; j++) {
+            for (let i = 0; i < midPoint; i++) {
+                this.data[endPoint - i][j].value = this.data[i][j].value
+            }
+        }
+        this.save()
+    }
+    
+    mirrorRtoL() {
+        const midPoint = this.columns / 2
+        const endPoint = this.columns - 1
+
+        for (let j = 0; j < this.rows; j++) {
+            for (let i = 0; i < midPoint; i++) {
+                this.data[i][j].value = this.data[endPoint - i][j].value
+            }
+        }
+        this.save()
+    }
 }
 
 class SG4Mode extends Mode {
