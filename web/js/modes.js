@@ -220,6 +220,28 @@ class Mode {
         }
         this.save()
     }
+
+    mirrorTtoB() {
+        const midPoint = this.rows / 2
+        const endPoint = this.rows - 1
+        for (let i = 0; i < midPoint; i++) {
+            for (let j = 0; j < this.columns; j++) {
+                this.data[j][endPoint - i].value = this.data[j][i].value
+            }
+        }
+        this.save()
+    }
+    
+    mirrorBtoT() {
+        const midPoint = this.rows / 2
+        const endPoint = this.rows - 1
+        for (let i = 0; i < midPoint; i++) {
+            for (let j = 0; j < this.columns; j++) {
+                this.data[j][i].value = this.data[j][endPoint - i].value
+            }
+        }
+        this.save()
+    }
 }
 
 class SG4Mode extends Mode {

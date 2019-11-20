@@ -62,6 +62,16 @@ function mirrorRtoL(){
     updateEditorWithData()
 }
 
+function mirrorTtoB(){
+    state.screen.mirrorTtoB()
+    updateEditorWithData()
+}
+
+function mirrorBtoT(){
+    state.screen.mirrorBtoT()
+    updateEditorWithData()
+}
+
 function zoomReset() {
     state.unit = state.screen.defaultUnit
     updateZoom()
