@@ -28,6 +28,8 @@ class Mode {
     }
 
     set(x, y, value) {
+        console.log(x,y)
+        if (x >= this.columns || y >= this.rows) return
         this.data[x][y].value = value
         this.save()
     }
@@ -208,7 +210,7 @@ class Mode {
         }
         this.save()
     }
-    
+
     mirrorRtoL() {
         const midPoint = this.columns / 2
         const endPoint = this.columns - 1
@@ -231,7 +233,7 @@ class Mode {
         }
         this.save()
     }
-    
+
     mirrorBtoT() {
         const midPoint = this.rows / 2
         const endPoint = this.rows - 1

@@ -3,6 +3,7 @@ class Editor {
         this.primary = localStorage.primaryChar ? localStorage.primaryChar : '8f'
         this.secondary = localStorage.secondaryChar ? localStorage.secondaryChar : '80'
         this.mouseDown = false
+        this.brushSize = 1
     }
 
     initGUIState() {
@@ -62,5 +63,17 @@ class Editor {
     actionOnBlock(pos, id, char) {
         $(id).css('background-image', getImgUrl(char))
         this.screen.set(pos[0], pos[1], char)
+        console.log('POP',this.brushSize)
+        if (this.brushSize == 2) {
+            console.log('Bigbrush')
+            this.screen.set(pos[0] + 1, pos[1] + 1, char)
+            $('#' + (pos[0]+1) + '-' + (pos[1]+1)).css('background-image', getImgUrl(char))
+
+            this.screen.set(pos[0], pos[1] + 1, char)
+            $('#' + pos[0] + '-' + (pos[1]+1)).css('background-image', getImgUrl(char))
+            
+            this.screen.set(pos[0] + 1, pos[1], char)
+            $('#' + (pos[0]+1) + '-' + pos[1]).css('background-image', getImgUrl(char))
+        }
     }
 }
