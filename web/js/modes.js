@@ -8,6 +8,8 @@ class Mode {
         this.defaultUnit = 8
         this.defaultValue = '0'
         this.export_csv = this.export_csv.bind(this)
+        this.undo = this.undo.bind(this)
+        this.undoStack = []
     }
 
     init(skipStorage) {
@@ -23,19 +25,29 @@ class Mode {
     }
 
     loadFromStorage() {
-        console.log('Loading from storage')
         this.data = JSON.parse(localStorage.screenData)
     }
 
     set(x, y, value) {
-        console.log(x,y)
         if (x >= this.columns || y >= this.rows) return
+        this.storeUndoStack()
         this.data[x][y].value = value
         this.save()
     }
 
+    storeUndoStack(){
+        this.undoStack.push(JSON.stringify(this.data))
+    }
+
     save() {
         localStorage.screenData = JSON.stringify(this.data)
+        console.log('Save UNDO ' + this.undoStack.length)
+    }
+
+    undo() {
+        if (this.undoStack.length===0) return
+        this.data = JSON.parse(this.undoStack.pop())
+        this.save()
     }
 
     export_csv() {
@@ -105,6 +117,7 @@ class Mode {
     }
 
     import_csv(csvdata) {
+        this.storeUndoStack()
         let index = 0
         let newdata = csvdata.replace('\r\n', '').replace('\n', '').replace('\r', '')
         newdata = newdata.split(',')
@@ -119,6 +132,7 @@ class Mode {
     }
 
     reset_data(value) {
+        this.storeUndoStack()
         for (let j = 0; j < this.rows; j++) {
             for (let i = 0; i < this.columns; i++) {
                 this.data[i][j].value = value
@@ -128,6 +142,7 @@ class Mode {
     }
 
     set_testcard() {
+        this.storeUndoStack()
         let char = 0
         for (let j = 0; j < this.rows; j++) {
             for (let i = 0; i < this.columns; i++) {
@@ -140,6 +155,7 @@ class Mode {
     }
 
     scrollUp() {
+        this.storeUndoStack()
         let tmp = []
         for (let i = 0; i < this.columns; i++) {
             tmp.push(this.data[i][0].value)
@@ -159,9 +175,10 @@ class Mode {
     }
 
     scrollDown() {
+        this.storeUndoStack()
         let tmp = []
         for (let i = 0; i < this.columns; i++) {
-            tmp.push(this.data[i][15].value)
+            tmp.push(this.data[i][this.rows-1].value)
         }
 
         for (let j = this.rows - 1; j > 0; j--) {
@@ -178,6 +195,7 @@ class Mode {
     }
 
     scrollLeft() {
+        this.storeUndoStack()
         for (let j = 0; j < this.rows; j++) {
             let tmp = this.data[0][j].value
             for (let i = 1; i < this.columns; i++) {
@@ -189,6 +207,7 @@ class Mode {
     }
 
     scrollRight() {
+        this.storeUndoStack()
         for (let j = 0; j < this.rows; j++) {
             let tmp = this.data[this.columns - 1][j].value
             for (let i = this.columns - 1; i > 0; i--) {
@@ -200,6 +219,7 @@ class Mode {
     }
 
     mirrorLtoR() {
+        this.storeUndoStack()
         const midPoint = this.columns / 2
         const endPoint = this.columns - 1
 
@@ -212,6 +232,7 @@ class Mode {
     }
 
     mirrorRtoL() {
+        this.storeUndoStack()
         const midPoint = this.columns / 2
         const endPoint = this.columns - 1
 
@@ -224,6 +245,7 @@ class Mode {
     }
 
     mirrorTtoB() {
+        this.storeUndoStack()
         const midPoint = this.rows / 2
         const endPoint = this.rows - 1
         for (let i = 0; i < midPoint; i++) {
@@ -235,6 +257,7 @@ class Mode {
     }
 
     mirrorBtoT() {
+        this.storeUndoStack()
         const midPoint = this.rows / 2
         const endPoint = this.rows - 1
         for (let i = 0; i < midPoint; i++) {

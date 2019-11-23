@@ -97,12 +97,13 @@
                 <img id="primaryBlock" src="" class="big-block" />
                 <img id="secondaryBlock" src="" class="big-block" />
                 <div style="padding-left: 25px;">
-                    <div class="side-label">Brush Size</div>
+                    <div class="side-label" style="width:90px">Brush Size</div>
                     <select id="brush-selection" onchange="setBrushSize(this.value)" style="width:100px">
                         <option value="1">1 x 1</option>
                         <option value="2">2 x 2</option>
                     </select>
                 </div>
+                <button style="text-align: center;width:100px;margin-left:10px" onclick="state.screen.undo();updateEditorWithData()">Undo</button>
             </div>
             <div class="rhp-block-palette">
                 <div id="sgsel"></div>
@@ -167,6 +168,7 @@
             <b>Version 3.0.2</b><br />
             <ul>
                 <li>Added Mirror feature.</li>
+                <li>Added Larger brush size feature.</li>
             </ul>
             <b>Version 3.0.1</b><br />
             <ul>
